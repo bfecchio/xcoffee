@@ -17,6 +17,8 @@ namespace XCoffee.Web.Pages
         #region Read-Only Fields
 
         private readonly ILogger<BasketModel> _logger;
+
+        private readonly IOrderService _orderService;
         private readonly IBasketService _basketService;
 
         #endregion
@@ -36,17 +38,18 @@ namespace XCoffee.Web.Pages
         #region Constructors
 
         public BasketModel(ILogger<BasketModel> logger
+            , IOrderService orderService
             , IBasketService basketService
         )
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger)); ;
+            _orderService = orderService ?? throw new ArgumentNullException(nameof(orderService));
             _basketService = basketService ?? throw new ArgumentNullException(nameof(basketService));            
         }
 
         #endregion
 
-        #region Methods
-       
+        #region Methods       
 
         public async Task<IActionResult> OnPostAddCoinAsync(int coinId)
         {
@@ -84,7 +87,8 @@ namespace XCoffee.Web.Pages
 
         public async Task<IActionResult> OnPostFinalizeAsync()
         {
-            return Page();
+            await _orderService.Add(_basketService.Basket);
+            return RedirectToPage("Index");
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using XCoffee.Core.Domain;
+using XCoffee.Ordering.Domain.AggregatesModel.ProductAggregate;
 
 namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
 {
@@ -25,6 +26,24 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
         #region Constructors
 
         protected Order() { }
+
+        public Order(int totalItems, decimal amount, decimal amountPaid, decimal amountPayBack)
+        {
+            TotalItems = totalItems;
+            Amount = amount;
+            AmountPaid = amountPaid;
+            AmountPayBack = amountPayBack;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void AddItem(Product product, int quantity)
+        {
+            var newItem = new OrderItem(product.Id, quantity, product.Price);
+            _orderItems.Add(newItem);
+        }
 
         #endregion
 
