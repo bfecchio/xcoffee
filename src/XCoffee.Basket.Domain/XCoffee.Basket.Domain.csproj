@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XCoffee.Core\XCoffee.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AggregateModel\BasketAggregate\" />
+  </ItemGroup>
+
+</Project>

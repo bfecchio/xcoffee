@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XCoffee.Ordering.Data\XCoffee.Ordering.Data.csproj" />
+    <ProjectReference Include="..\XCoffee.Ordering.Domain\XCoffee.Ordering.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
