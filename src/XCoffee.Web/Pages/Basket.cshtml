@@ -73,7 +73,7 @@
                 <button type="submit" asp-page-handler="clear"  class="btn btn-warning float-left" onclick="return confirm('Deseja retornar as moedas depositadas?')">Limpar</button>
                 @if (Model.AmountPaid >= Model.Amount)
                 {
-                    <button type="submit" asp-page-handler="finalize" class="btn btn-primary float-right">Finalizar</button>
+                    <button type="submit" asp-page-handler="finalize" class="btn btn-primary float-right" onclick="return confirm('Deseja finalizar o pedido?')">Finalizar</button>
                 }
             </div>
         </div>
