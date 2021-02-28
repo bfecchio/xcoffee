@@ -18,9 +18,8 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
 
         public BasketCoin(Coin coin, int quantity)
         {
-            Guard.AssertArgumentNotNull(coin, "The coin is required.");
-            Guard.AssertArgumentRange(quantity, 1, 10, "The quantity of the product must be between 1 and 10.");
-
+            Guard.AssertArgumentNotNull(coin, "The coin is required.");    
+            
             Coin = coin;
             Quantity = quantity;
         }

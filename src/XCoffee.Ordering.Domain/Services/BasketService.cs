@@ -34,6 +34,9 @@ namespace XCoffee.Ordering.Domain.Services
         public void Cancel()
             => Basket = null;
 
+        public void ClearCoins()
+            => Basket.ClearCoins();
+
         public void AddItem(Product product, int quantity)
             => Basket.AddItem(product, quantity);
 

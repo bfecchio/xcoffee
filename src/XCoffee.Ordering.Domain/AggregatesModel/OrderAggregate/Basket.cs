@@ -43,8 +43,7 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
 
         internal protected void AddItem(Product product, int quantity)
         {
-            Guard.AssertArgumentNotNull(product, "The product is required.");
-            Guard.AssertArgumentRange(quantity, 1, 10, "The quantity of the product must be between 1 and 10.");
+            Guard.AssertArgumentNotNull(product, "The product is required.");            
 
             var basketItem = _items.FirstOrDefault(x => x.Product == product);
             if (basketItem != null)
@@ -57,8 +56,7 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
 
         internal protected void AddCoin(Coin coin, int quantity)
         {
-            Guard.AssertArgumentNotNull(coin, "The coin is required.");
-            Guard.AssertArgumentRange(quantity, 1, 10, "The quantity of the product must be between 1 and 10.");
+            Guard.AssertArgumentNotNull(coin, "The coin is required.");            
 
             var depositedCoin = _coins.FirstOrDefault(x => x.Coin == coin);
             if (depositedCoin != null)
@@ -70,6 +68,14 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
             CalculatePayBack();
         }
 
+        internal protected void ClearCoins()
+        {
+            _coins.Clear();
+            _payBackCoins.Clear();
+
+            CalculatePayment();
+            CalculatePayBack();
+        }
 
         private void CalculateTotal()
             => Amount = _items?.Sum(x => x.Amount) ?? 0;
@@ -80,9 +86,9 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
         private void CalculatePayBack()
         {
             var payback = (AmountPaid > 0 ? AmountPaid - Amount : 0);
-            if (payback <= 0) return;
+            AmountPayBack = (payback < 0 ? 0 : payback);
 
-            AmountPayBack = payback;
+            if (payback <= 0) return;
             ComputePayBackCoins(payback);
         }
 
@@ -90,6 +96,7 @@ namespace XCoffee.Ordering.Domain.AggregatesModel.OrderAggregate
         {
             var coinOptions = Enumeration<int>.GetAll<Coin>();
 
+            _payBackCoins.Clear();
             foreach (var coin in coinOptions.OrderByDescending(x => x.Value))
             {
                 var units = (int)(payBack / coin.Value);

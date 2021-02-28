@@ -28,8 +28,8 @@ namespace XCoffee.Web.Pages
         public decimal AmountPayBack => _basketService.Basket.AmountPayBack;
         public IEnumerable<BasketItem> Items => _basketService.ListItems();
         public IEnumerable<BasketCoin> Coins => _basketService.ListCoins();
-        public IEnumerable<BasketCoin> PayBackCoins => _basketService.Basket.PayBackCoins;
-        public IEnumerable<Coin> CoinOptions => Enumeration<int>.GetAll<Coin>().OrderBy(x => x.Value).ToList();
+        public IEnumerable<Coin> CoinOptions => Enumeration<int>.GetAll<Coin>().OrderBy(x => x.Value);
+        public IEnumerable<BasketCoin> PayBackCoins => _basketService.Basket.PayBackCoins.OrderBy(x => x.Coin.Value);
 
         #endregion
 
@@ -75,7 +75,14 @@ namespace XCoffee.Web.Pages
             return RedirectToPage("Index");
         }
 
-        public async Task<IActionResult> OnPostSubmitAsync()
+
+        public async Task<IActionResult> OnPostClearAsync()
+        {
+            _basketService.ClearCoins();
+            return Page();            
+        }
+
+        public async Task<IActionResult> OnPostFinalizeAsync()
         {
             return Page();
         }

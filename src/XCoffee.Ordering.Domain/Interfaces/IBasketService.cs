@@ -14,7 +14,9 @@ namespace XCoffee.Ordering.Domain.Interfaces
 
         void New();
         void Cancel();
-        
+        void ClearCoins();
+
+
         IEnumerable<BasketItem> ListItems();
         void AddCoin(Coin coin, int quantity);
         

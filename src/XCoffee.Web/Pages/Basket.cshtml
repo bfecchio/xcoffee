@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "XCoffee";
+    var disabled = (Model.AmountPaid >= Model.Amount ? "disabled" : "");
 }
 
 <div class="row mt-5 mb-3">
@@ -21,6 +22,7 @@
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Aceitamos as seguintes moedas</span>
             </h4>
+            <div asp-validation-summary="All"></div>
             <div class="row">
                 <div class="col-12">
                     @foreach (var coin in Model.CoinOptions)
@@ -67,8 +69,12 @@
                 </li>
             </ul>
             <div>
-                <button type="submit" asp-page-handler="cancel" class="btn btn-danger float-left" onclick="return confirm('Deseja cancelar este pedido?')">Cancelar</button>
-                <button type="submit" asp-page-handler="submit" class="btn btn-primary float-right">Finalizar</button>
+                <button type="submit" asp-page-handler="cancel" class="btn btn-danger float-left mr-3" onclick="return confirm('Deseja cancelar este pedido?')">Cancelar</button>
+                <button type="submit" asp-page-handler="clear"  class="btn btn-warning float-left" onclick="return confirm('Deseja retornar as moedas depositadas?')">Limpar</button>
+                @if (Model.AmountPaid >= Model.Amount)
+                {
+                    <button type="submit" asp-page-handler="finalize" class="btn btn-primary float-right">Finalizar</button>
+                }
             </div>
         </div>
     </div>
