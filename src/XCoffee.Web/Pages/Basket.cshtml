@@ -1,0 +1,64 @@
+﻿@page
+@model XCoffee.Web.Pages.BasketModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "XCoffee";
+}
+
+<div class="row mt-5 mb-3">
+    <div class="col">
+        <div class="al-services-header text-center">
+            <h2>Revisão do pedido</h2>
+            <p>Revise o seu pedido e clique nas moedas para incluir valores ao pagamento</p>
+        </div>
+    </div>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Aceitamos as seguintes moedas</span>
+            </h4>
+            <div class="row">
+                <div class="col-12">
+                    @foreach(var coin in Model.CoinOptions)
+                    {
+                        <button type="submit" asp-page-handler="addcoin" asp-route-coinId="@coin.Id" class="btn btn-lg btn-block btn-success text-uppercase">@coin.Name<br />@coin.Currency</button>
+                    }
+                </div>
+            </div>        
+        </div>
+        <div class="col-md-4 offset-1 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Bebidas escolhidas</span>
+                <span class="badge badge-secondary badge-pill">@Model.Items.Count()</span>
+            </h4>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model.Items)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">@item.Product.Name</h6>
+                            <small class="text-muted">@item.Quantity x @item.Product.Price.ToString("C2")</small>
+                        </div>
+                        <span class="text-muted">@item.Amount.ToString("C2")</span>
+                    </li>
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <h6>Total</h6>
+                    <strong>@Model.Items.Sum(x => x.Amount).ToString("C2")</strong>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <h6>Total crédito</h6>
+                    <strong>@Model.Coins.Sum(x => x.Amount).ToString("C2")</strong>
+                </li>
+            </ul>
+            <div>
+                <button type="submit" asp-page-handler="cancel" class="btn btn-danger float-left" onclick="return confirm('Deseja cancelar este pedido?')">Cancelar</button>
+                <button type="submit" asp-page-handler="submit" class="btn btn-primary float-right">Finalizar</button>
+            </div>
+        </div>
+    </div>
+</form>

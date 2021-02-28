@@ -23,6 +23,8 @@ namespace XCoffee.Ordering.Data.Configurations
             builder.Property(p => p.Id).ValueGeneratedNever();
             builder.Property(p => p.Name).HasColumnType("VARCHAR(80)").IsRequired();
             builder.Property(p => p.Price).HasColumnType("NUMERIC(8,2)").IsRequired();
+            builder.Property(p => p.Thumbnail).HasColumnType("VARCHAR(80)").IsRequired();
+            builder.Property(p => p.Description).HasColumnType("VARCHAR(70)").IsRequired();
         }
 
         #endregion

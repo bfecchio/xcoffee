@@ -33,7 +33,9 @@ namespace XCoffee.Ordering.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(type: "VARCHAR(80)", nullable: false),
-                    Price = table.Column<decimal>(type: "NUMERIC(8,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "NUMERIC(8,2)", nullable: false),
+                    Thumbnail = table.Column<string>(type: "VARCHAR(80)", nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(70)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,20 +74,20 @@ namespace XCoffee.Ordering.Data.Migrations
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price" },
-                values: new object[] { new Guid("22865e17-adb2-4f15-9e35-afb2d3bac296"), "Mocha", 4.0m });
+                columns: new[] { "Id", "Description", "Name", "Price", "Thumbnail" },
+                values: new object[] { new Guid("22865e17-adb2-4f15-9e35-afb2d3bac296"), "Café, chocolate, leite vaporizado e finalizado com chantilly.", "Mocha", 4.0m, "coffee_2.png" });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price" },
-                values: new object[] { new Guid("25855ff4-b3dd-46be-aef0-689b44319ff2"), "Cappuccino", 3.5m });
+                columns: new[] { "Id", "Description", "Name", "Price", "Thumbnail" },
+                values: new object[] { new Guid("25855ff4-b3dd-46be-aef0-689b44319ff2"), "Bebida italiana preparada com café expresso e leite.", "Cappuccino", 3.5m, "coffee_1.png" });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Products",
-                columns: new[] { "Id", "Name", "Price" },
-                values: new object[] { new Guid("949905d3-99ca-4d3a-a3f7-4c88d3132abc"), "Café com Leite", 3.0m });
+                columns: new[] { "Id", "Description", "Name", "Price", "Thumbnail" },
+                values: new object[] { new Guid("949905d3-99ca-4d3a-a3f7-4c88d3132abc"), "Bebida matinal mais consumida no mundo.", "Café com Leite", 3.0m, "coffee_3.png" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",

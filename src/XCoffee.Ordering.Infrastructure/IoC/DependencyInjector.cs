@@ -40,7 +40,7 @@ namespace XCoffee.Ordering.Infrastructure.IoC
         private static IServiceCollection RegisterDomainServices(this IServiceCollection services)
         {            
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IBasketService, BasketService>();
+            services.AddSingleton<IBasketService, BasketService>();
 
             return services;
         }

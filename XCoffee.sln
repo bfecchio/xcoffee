@@ -7,19 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedKernel", "SharedKerne
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{311766A3-4CBF-45F6-B9A5-841CF9D2C26D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoffee.Core", "src\XCoffee.Core\XCoffee.Core.csproj", "{92F0369A-E34D-4AA0-846F-B05A94AB4F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCoffee.Core", "src\XCoffee.Core\XCoffee.Core.csproj", "{92F0369A-E34D-4AA0-846F-B05A94AB4F6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3D687086-9701-4453-8003-27762F78E29A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{6DA792B1-161F-4204-B070-B6C0BD0A81F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoffee.Ordering.Domain", "src\XCoffee.Ordering.Domain\XCoffee.Ordering.Domain.csproj", "{AA6EBDF8-41D3-4AE6-A162-F8E3F1DADC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCoffee.Ordering.Domain", "src\XCoffee.Ordering.Domain\XCoffee.Ordering.Domain.csproj", "{AA6EBDF8-41D3-4AE6-A162-F8E3F1DADC9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoffee.Ordering.Data", "src\XCoffee.Ordering.Data\XCoffee.Ordering.Data.csproj", "{65295712-761E-4BD0-8152-32A055B78C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCoffee.Ordering.Data", "src\XCoffee.Ordering.Data\XCoffee.Ordering.Data.csproj", "{65295712-761E-4BD0-8152-32A055B78C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoffee.Ordering.Infrastructure", "src\XCoffee.Ordering.Infrastructure\XCoffee.Ordering.Infrastructure.csproj", "{EBF5D2FC-6937-4703-9DAD-BDF5F5F875C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCoffee.Ordering.Infrastructure", "src\XCoffee.Ordering.Infrastructure\XCoffee.Ordering.Infrastructure.csproj", "{EBF5D2FC-6937-4703-9DAD-BDF5F5F875C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCoffee.Web", "src\XCoffee.Web\XCoffee.Web.csproj", "{2B6D1BAF-0503-4E4C-8787-AF1D94364AA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCoffee.Web", "src\XCoffee.Web\XCoffee.Web.csproj", "{2B6D1BAF-0503-4E4C-8787-AF1D94364AA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

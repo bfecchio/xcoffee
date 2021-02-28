@@ -9,7 +9,7 @@ using XCoffee.Ordering.Data.Context;
 namespace XCoffee.Ordering.Data.Migrations
 {
     [DbContext(typeof(OrderingContext))]
-    [Migration("20210228020310_Add_OrderingContext_Models")]
+    [Migration("20210228132555_Add_OrderingContext_Models")]
     partial class Add_OrderingContext_Models
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,12 +74,20 @@ namespace XCoffee.Ordering.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(70)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("VARCHAR(80)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("NUMERIC(8,2)");
+
+                    b.Property<string>("Thumbnail")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(80)");
 
                     b.HasKey("Id");
 
@@ -89,20 +97,26 @@ namespace XCoffee.Ordering.Data.Migrations
                         new
                         {
                             Id = new Guid("22865e17-adb2-4f15-9e35-afb2d3bac296"),
+                            Description = "Café, chocolate, leite vaporizado e finalizado com chantilly.",
                             Name = "Mocha",
-                            Price = 4.0m
+                            Price = 4.0m,
+                            Thumbnail = "coffee_2.png"
                         },
                         new
                         {
                             Id = new Guid("25855ff4-b3dd-46be-aef0-689b44319ff2"),
+                            Description = "Bebida italiana preparada com café expresso e leite.",
                             Name = "Cappuccino",
-                            Price = 3.5m
+                            Price = 3.5m,
+                            Thumbnail = "coffee_1.png"
                         },
                         new
                         {
                             Id = new Guid("949905d3-99ca-4d3a-a3f7-4c88d3132abc"),
+                            Description = "Bebida matinal mais consumida no mundo.",
                             Name = "Café com Leite",
-                            Price = 3.0m
+                            Price = 3.0m,
+                            Thumbnail = "coffee_3.png"
                         });
                 });
 

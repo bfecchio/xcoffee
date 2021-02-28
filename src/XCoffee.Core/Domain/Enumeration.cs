@@ -53,15 +53,15 @@ namespace XCoffee.Core.Domain
             return fields.Select(f => f.GetValue(null)).Cast<T>();
         }
 
-        public static T FromValue<T>(TKey value) where T : Enumeration<TKey>
+        public static T FromId<T>(TKey id) where T : Enumeration<TKey>
         {
-            var matchingItem = Parse<T, TKey>(value, "value", item => item.Id.Equals(value));
+            var matchingItem = Parse<T, TKey>(id, "id", item => item.Id.Equals(id));
             return matchingItem;
         }
 
-        public static T FromDisplayName<T>(string displayName) where T : Enumeration<TKey>
+        public static T FromName<T>(string name) where T : Enumeration<TKey>
         {
-            var matchingItem = Parse<T, string>(displayName, "display name", item => item.Name == displayName);
+            var matchingItem = Parse<T, string>(name, "name", item => item.Name == name);
             return matchingItem;
         }
 
