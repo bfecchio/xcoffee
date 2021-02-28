@@ -10,6 +10,8 @@ namespace XCoffee.Ordering.Domain.Interfaces
     {
         #region IBasketService Members
 
+        Basket Basket { get; }
+
         void New();
         void Cancel();
         

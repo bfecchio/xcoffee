@@ -23,8 +23,12 @@ namespace XCoffee.Web.Pages
 
         #region Properties
 
+        public decimal Amount => _basketService.Basket.Amount;
+        public decimal AmountPaid => _basketService.Basket.AmountPaid;
+        public decimal AmountPayBack => _basketService.Basket.AmountPayBack;
         public IEnumerable<BasketItem> Items => _basketService.ListItems();
         public IEnumerable<BasketCoin> Coins => _basketService.ListCoins();
+        public IEnumerable<BasketCoin> PayBackCoins => _basketService.Basket.PayBackCoins;
         public IEnumerable<Coin> CoinOptions => Enumeration<int>.GetAll<Coin>().OrderBy(x => x.Value).ToList();
 
         #endregion
